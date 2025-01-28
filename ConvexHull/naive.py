@@ -1,23 +1,11 @@
 from typing import List
 from test import generate_input
+from operations import orientation_test
 import time
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
-
-
-def orientation_test(initial: List[int], terminal: List[int], point: List[int]) -> int:
-    vector_a = [terminal[0] - initial[0], terminal[1] - initial[1]]
-    vector_b = [point[0] - initial[0], point[1] - initial[1]]
-    cross_product = vector_a[0]*vector_b[1] - vector_a[1]*vector_b[0]
-
-    if cross_product > 0:
-        return 1
-    elif cross_product == 0:
-        return 0
-    else:
-        return -1
 
 
 def naive_convex_hull(points: List[List[int]]) -> List[List[int]]:
