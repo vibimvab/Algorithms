@@ -1,6 +1,6 @@
 from typing import List
 from test import generate_input
-from operations import orientation_test
+from operations import orientation_test, identical_points
 import time
 import numpy as np
 import matplotlib
@@ -21,6 +21,9 @@ def naive_convex_hull(points: List[List[int]]) -> List[List[int]]:
     for i, first_point in enumerate(points):
         for j, second_point in enumerate(points[i+1:]):
             j = i+j+1
+
+            if identical_points(first_point, second_point):
+                continue
 
             sign = 0
             for k, third_point in enumerate(points):
